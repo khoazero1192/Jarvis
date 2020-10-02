@@ -8,12 +8,13 @@ from jarvis import Jarvis
 HEADERS = {'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com",
            'x-rapidapi-key': "cecf414141msh96489e04be93bcfp177721jsn55924ff9efaa"}
 QUERRY_STRING = {"region": "US", "start": "0", "lang": "en-US", "count": "6"}
+GROUP_ID = "4151234508237032"
 
 
 class Main(object):
     def __init__(self):
         data = json.load(open("creds.json", 'r'))
-        self.jarvis = Jarvis(data['id'], data['password'], '3181465165315259')
+        self.jarvis = Jarvis(data['id'], data['password'], GROUP_ID)
 
     def get_movers(self):
         url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers"
