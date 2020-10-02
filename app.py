@@ -1,8 +1,6 @@
 # Main app
 import requests
 import json
-import pandas as pd
-import schedule
 import time
 
 from jarvis import Jarvis
@@ -27,10 +25,5 @@ class Main(object):
         print("Sending notification about top movers")
         self.jarvis.send_message(string)
 
-
-# main thread
 main = Main()
-schedule.every().day.at("06:00").do(main.get_movers)
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+main.get_movers()
