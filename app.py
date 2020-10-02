@@ -26,5 +26,6 @@ class Main(object):
         print("Sending notification about top movers")
         self.jarvis.send_message(string)
 
+
 main = Main()
 main.get_movers()
