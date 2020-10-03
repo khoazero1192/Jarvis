@@ -1,7 +1,7 @@
 # Main app
 import requests
 import json
-import time
+import argparse
 
 from jarvis import Jarvis
 
@@ -13,9 +13,9 @@ TEST_GROUP_ID = "3181465165315259"
 
 
 class Main(object):
-    def __init__(self):
+    def __init__(self, gid=TEST_GROUP_ID):
         data = json.load(open("creds.json", 'r'))
-        self.jarvis = Jarvis(data['id'], data['password'], TEST_GROUP_ID)
+        self.jarvis = Jarvis(data['id'], data['password'], gid)
 
     def get_movers(self):
         url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-movers"
@@ -34,5 +34,11 @@ class Main(object):
         self.jarvis.send_message(string)
 
 
-main = Main()
+parser = argparse.ArgumentParser(description='What is the group ID')
+parser.add_argument('-gid', metavar='group_id',
+                    help='an integer for the accumulator')
+
+args = parser.parse_args()
+main = Main(args.gid)
 main.get_movers()
+
