@@ -26,7 +26,7 @@ class Main(object):
             string += "%s\n" % item["symbol"]
 
         losers = resp["finance"]["result"][1]["quotes"]
-        string += "-------------------"
+        string += "-------------------\n"
         string += "TOP Losers: \n"
         for item in losers:
             string += "%s\n" % item["symbol"]
